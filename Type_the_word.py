@@ -14,7 +14,8 @@ stored_words = [
 used_words=[]
 word = random.choice(stored_words)
 while repeted == True:   
-    
+    match_label = visible=False
+    dont_match_label= visible=False
     if word in used_words: 
             repeted == False    
     else:
@@ -22,12 +23,12 @@ while repeted == True:
 
 def check_button_clicked():
     if word_display==user_word :
-        match_label.visible(True)
+        match_label.visible=True
     if word_display !=user_word :
-        dont_match_label.visible(True)
+        dont_match_label.visible=True
     else:
-         match_label.visible(False)
-         dont_match_label.visible(False)
+         match_label.visible=False
+         dont_match_label.visible=False
 
 word_display = ft.Text(f"Selected Word: {word}")
 def main(page: ft.Page):
@@ -37,6 +38,7 @@ def main(page: ft.Page):
     page.window.width = 600
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
-    page.add( word_display,user_word,ft.ElevatedButton( check_button_clicked(), text="check", color="white", width=200))
+    page.add( word_display,user_word,ft.ElevatedButton(text="check", color="white", width=200, on_click=check_button_clicked))
+
     
 ft.app(main)   
